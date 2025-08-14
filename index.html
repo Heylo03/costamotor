@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Presentación de fotos - Ebro</title>
+<style>
+  body {
+    text-align: center;
+    background-color: #111;
+    color: white;
+    font-family: Arial, sans-serif;
+  }
+  img {
+    max-width: 100%;
+    max-height: 100vh;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(255,255,255,0.3);
+  }
+</style>
+</head>
+<body>
+
+<img id="slide" src="foto1.jpg" alt="Presentación">
+
+<script>
+  // Lista de imágenes (escribe aquí todos los nombres que tengas en la carpeta Ebro)
+  const slides = [
+    "foto1.jpg",
+    "foto2.jpg",
+    "foto3.jpg",
+    "foto4.jpg",
+	"foto5.jpg",
+	"foto6.jpg",
+	"foto7.jpg",
+    "foto8.jpg",
+    "foto9.jpg",
+    "foto10.jpg",
+    "foto11.jpg",
+    "foto12.jpg",
+    "foto13.jpg",
+	"foto14.jpg",
+	"foto15.jpg",
+    "foto16.jpg",
+    "foto17.jpg",
+    "foto18.jpg",
+    "foto19.jpg",
+  ];
+
+  let index = 0;
+
+  function changeSlide() {
+    index = (index + 1) % slides.length;
+    document.getElementById("slide").src = slides[index];
+  }
+
+  setInterval(changeSlide, 5000); // cambia cada 3 segundos
+</script>
+
+</body>
+</html>
