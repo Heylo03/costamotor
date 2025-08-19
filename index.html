@@ -19,7 +19,6 @@
     max-height: 120vh;
     overflow: hidden;
     box-shadow: 0 0 10px rgba(255,255,255,0.3);
-    margin-bottom: 10px;
     display: block;
     margin-left: auto;
     margin-right: auto;
@@ -49,36 +48,68 @@
 
 <!-- Carrusel 1 recortado -->
 <div class="half-left">
-  <img id="slide" src="src/foto2.jpg" alt="Presentación">
+  <img id="slide" src="src/negro.jpg" alt="Presentación">
 </div>
 
-<!-- Carrusel 2 completo a todo ancho -->
-<img id="slide2" class="full" src="src/foto2 - copia.jpg" alt="Presentación copia">
+<!-- Carrusel 2 completo a todo el ancho -->
+<img id="slide2" class="full" src="src/foto20.jpg" alt="Presentación copia">
 
 <script>
-  // Arrays con las imágenes de ambos carruseles (añadiendo la ruta src/)
+  // Arrays con las imágenes de ambos carruseles
   const slides1 = [
-    "src/foto2.jpg","src/foto3.jpg","src/foto4.jpg","src/foto5.jpg","src/foto6.jpg","src/foto7.jpg",
+    "src/negro.jpg","src/foto2.jpg","src/foto3.jpg","src/foto4.jpg","src/foto5.jpg","src/foto6.jpg","src/foto7.jpg",
     "src/foto8.jpg","src/foto9.jpg","src/foto10.jpg","src/foto11.jpg","src/foto12.jpg","src/foto13.jpg",
     "src/foto14.jpg","src/foto15.jpg","src/foto16.jpg","src/foto17.jpg","src/foto18.jpg","src/foto19.jpg"
   ];
 
   const slides2 = [
-    "src/foto2 - copia.jpg","src/foto3 - copia.jpg","src/foto4 - copia.jpg","src/foto5 - copia.jpg","src/foto6 - copia.jpg","src/foto7 - copia.jpg",
+    "src/foto20.jpg","src/foto2 - copia.jpg","src/foto3 - copia.jpg","src/foto4 - copia.jpg","src/foto5 - copia.jpg","src/foto6 - copia.jpg","src/foto7 - copia.jpg",
     "src/foto8 - copia.jpg","src/foto9 - copia.jpg","src/foto10 - copia.jpg","src/foto11 - copia.jpg","src/foto12 - copia.jpg","src/foto13 - copia.jpg",
     "src/foto14 - copia.jpg","src/foto15 - copia.jpg","src/foto16 - copia.jpg","src/foto17 - copia.jpg","src/foto18 - copia.jpg","src/foto19 - copia.jpg"
+  ];
+
+  // Duraciones personalizadas (en milisegundos) para cada foto
+  const durations = [
+    10000, // foto20.jpg -> 5s
+    5000, 
+    5000, 
+    5000, 
+    5000, 
+    5000, 
+    5000, 
+    5000, 
+    5000,
+    5000,
+    5000,
+    5000, 
+    5000,
+    5000,
+    5000,
+    5000,
+    5000, 
+    5000,
+    5000
   ];
 
   let index = 0;
 
   function changeSlides() {
-    index = (index + 1) % slides1.length;
+    // actualizar imágenes
     document.getElementById("slide").src = slides1[index];
     document.getElementById("slide2").src = slides2[index];
+
+    // calcular el tiempo de espera según la foto
+    const delay = durations[index] || 5000; // por defecto 5s si no hay valor
+
+    // pasar a la siguiente foto
+    index = (index + 1) % slides1.length;
+
+    // volver a llamar a la función después del tiempo definido
+    setTimeout(changeSlides, delay);
   }
 
-  // Cambian cada 5 segundos
-  setInterval(changeSlides, 5000);
+  // iniciar carrusel
+  changeSlides();
 </script>
 
 </body>
